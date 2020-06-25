@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import Task from "./Task";
 
 const Todo = ({ todo }) => {
+  const [isEditable, setEditable] = useState(false);
+
   return (
     <li className="todo-item">
-      {todo.name}
+      <p>{todo.name}</p>
+      <button onClick={() => setEditable(!isEditable)}>Edit</button>
       <ul>
         {todo.tasks.map((task, index) => {
-          return <Task key={`task-${task.id}`} task={task} />;
+          console.log(task.defaultSubtask);
+          return (
+            <Task key={`task-${task.id}`} task={task} editable={isEditable} />
+          );
         })}
       </ul>
     </li>

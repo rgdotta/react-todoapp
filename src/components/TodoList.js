@@ -3,15 +3,17 @@ import { connect } from "react-redux";
 import Todo from "./Todo";
 // import { getTodos } from "../redux/selectors";
 
-const TodoList = ({ todos }) => (
-  <ul className="todo-list">
-    {todos && todos.length
-      ? todos.map((todo, index) => {
-          return <Todo key={`todo-${todo.id}`} todo={todo} />;
-        })
-      : ""}
-  </ul>
-);
+const TodoList = ({ todos }) => {
+  return (
+    <ul className="todo-list">
+      {todos && todos.length
+        ? todos.map((todo, index) => {
+            return <Todo key={`todo-${todo.id}`} todo={todo} />;
+          })
+        : ""}
+    </ul>
+  );
+};
 
 const mapStateToProps = (state) => {
   const { byIds, allIds } = state.todos || {};

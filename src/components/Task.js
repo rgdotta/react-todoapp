@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import Subtask from "./Subtask";
 
 const Task = (props) => {
   const [subtasksList, setSubtasksList] = useState([]);
-  const [subtask, setSubtask] = useState([""]);
+  const [subtask, setSubtask] = useState("");
   const [isComplete, setComplete] = useState(false);
+  const [completedTask, setCompletedTask] = useState(0);
 
   function handleChange(input) {
     setSubtask(input);
@@ -15,26 +17,60 @@ const Task = (props) => {
     setSubtasksList((prevSubtasks) => {
       return [...prevSubtasks, newSubtask];
     });
+
+    setSubtask("");
   }
 
   function completeTask() {
     setComplete(!isComplete);
   }
 
+  function subtaskCompleted(completed) {
+    const comparison = subtasksList.length;
+    let value = completed;
+
+    let newValue = completedTask + value;
+    setCompletedTask(newValue);
+
+    if (comparison === newValue) {
+      setComplete(true);
+    } else {
+      setComplete(false);
+    }
+  }
+
+  function deleteSubtask(toDelete) {
+    let array = subtasksList;
+    let filteredArray = array.filter((e) => e !== toDelete);
+
+    setSubtasksList(filteredArray);
+  }
+
   return (
     <li>
-      {console.log(isComplete)}
       <p
         style={{ textDecoration: isComplete ? "line-through" : "none" }}
         onClick={completeTask}
       >
         {props.task.name}
       </p>
-      <input onChange={(e) => handleChange(e.target.value)}></input>
-      <button onClick={addSubtask}>Adicionar</button>
+      {props.editable && (
+        <div>
+          <input onChange={(e) => handleChange(e.target.value)}></input>
+          <button onClick={addSubtask}>Adicionar</button>
+        </div>
+      )}
       <ul>
         {subtasksList.map((thisSubtask, index) => {
-          return <li key={index}>{thisSubtask}</li>;
+          return (
+            <Subtask
+              key={index}
+              subtask={thisSubtask}
+              complete={subtaskCompleted}
+              editable={props.editable}
+              delete={deleteSubtask}
+            />
+          );
         })}
       </ul>
     </li>

@@ -25,6 +25,7 @@ class AddTodo extends React.Component {
   updateCounter = () => {
     const count = this.state.taskCounter;
     var newCount;
+
     if (!count) {
       newCount = 0;
     } else {

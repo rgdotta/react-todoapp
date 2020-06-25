@@ -5,7 +5,11 @@ const initialState = {
   byIds: {
     0: {
       name: "Trabalho",
-      tasks: [],
+      tasks: [
+        { id: 0, name: "Tarefa 1" },
+        { id: 1, name: "Tarefa 2" },
+        { id: 2, name: "Tarefa 3" },
+      ],
     },
     1: {
       name: "Afazeres da Casa",
@@ -13,11 +17,7 @@ const initialState = {
     },
     2: {
       name: "Compras",
-      tasks: [
-        { id: 0, name: "Carne" },
-        { id: 1, name: "Leite" },
-        { id: 2, name: "Verduras" },
-      ],
+      tasks: [],
     },
   },
 };
