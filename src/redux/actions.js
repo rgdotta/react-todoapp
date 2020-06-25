@@ -1,6 +1,6 @@
 import { ADD_TODO } from "./actionTypes";
 
-let nextTodoId = 0;
+let nextTodoId = 3;
 
 export const addTodo = (name, tasks) => ({
   type: ADD_TODO,

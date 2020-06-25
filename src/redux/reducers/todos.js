@@ -1,8 +1,25 @@
 import { ADD_TODO } from "../actionTypes";
 
 const initialState = {
-  allIds: [],
-  byIds: {},
+  allIds: [0, 1, 2],
+  byIds: {
+    0: {
+      name: "Trabalho",
+      tasks: [],
+    },
+    1: {
+      name: "Afazeres da Casa",
+      tasks: [],
+    },
+    2: {
+      name: "Compras",
+      tasks: [
+        { id: 0, name: "Carne" },
+        { id: 1, name: "Leite" },
+        { id: 2, name: "Verduras" },
+      ],
+    },
+  },
 };
 
 export default function (state = initialState, action) {
@@ -17,7 +34,6 @@ export default function (state = initialState, action) {
           [id]: {
             name,
             tasks,
-            completed: false,
           },
         },
       };
