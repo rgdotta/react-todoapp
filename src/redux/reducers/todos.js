@@ -1,4 +1,4 @@
-import { ADD_TODO } from "../actionTypes";
+import { ADD_TODO, RENAME_TODO } from "../actionTypes";
 
 const initialState = {
   allIds: [0, 1, 2],
@@ -34,6 +34,19 @@ export default function (state = initialState, action) {
           [id]: {
             name,
             tasks,
+          },
+        },
+      };
+    }
+    case RENAME_TODO: {
+      const { id, name } = action.payload;
+      return {
+        ...state,
+        byIds: {
+          ...state.byIds,
+          [id]: {
+            ...state.byIds[id],
+            name,
           },
         },
       };

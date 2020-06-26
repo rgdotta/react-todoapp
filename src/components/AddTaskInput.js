@@ -1,6 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
-import { addTodo } from "../redux/actions";
 
 class AddTaskInput extends React.Component {
   constructor(props) {
@@ -9,6 +7,7 @@ class AddTaskInput extends React.Component {
       task: "",
       create: false,
     };
+    this.handleTask = this.handleTask.bind(this);
   }
 
   handleTask = (input) => {
@@ -36,7 +35,7 @@ class AddTaskInput extends React.Component {
               onChange={(e) => this.handleTask(e.target.value)}
             />
 
-            <button onClick={() => this.submitTask()}>OK</button>
+            <button onClick={this.submitTask.bind(this)}>OK</button>
           </div>
         )}
       </div>
@@ -44,4 +43,4 @@ class AddTaskInput extends React.Component {
   }
 }
 
-export default connect(null, { addTodo })(AddTaskInput);
+export default AddTaskInput;

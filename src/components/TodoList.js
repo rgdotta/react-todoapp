@@ -1,14 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
 import Todo from "./Todo";
-// import { getTodos } from "../redux/selectors";
+import { renameTodo } from "../redux/actions";
 
-const TodoList = ({ todos }) => {
+const TodoList = ({ todos, renameTodo }) => {
   return (
     <ul className="todo-list">
       {todos && todos.length
         ? todos.map((todo, index) => {
-            return <Todo key={`todo-${todo.id}`} todo={todo} />;
+            return (
+              <Todo
+                key={`todo-${todo.id}`}
+                todo={todo}
+                renameTodo={renameTodo}
+              />
+            );
           })
         : ""}
     </ul>
@@ -24,5 +30,6 @@ const mapStateToProps = (state) => {
   return { todos };
 };
 
-// export default TodoList;
-export default connect(mapStateToProps)(TodoList);
+const mapDispatchToProps = { renameTodo };
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

@@ -11,6 +11,7 @@ class AddTodo extends React.Component {
       tasks: [],
       taskCounter: [],
     };
+    this.updateInput = this.updateInput.bind(this);
   }
 
   updateInput = (input) => {
@@ -22,7 +23,7 @@ class AddTodo extends React.Component {
     this.setState({ tasks: list });
   };
 
-  updateCounter = () => {
+  updateCounter = (e) => {
     const count = this.state.taskCounter;
     var newCount;
 
@@ -35,35 +36,49 @@ class AddTodo extends React.Component {
 
     const list = [...count, newCount];
     this.setState({ taskCounter: list });
+
+    e.preventDefault();
   };
 
-  handleAddTodo = () => {
+  handleAddTodo = (e) => {
     if (!this.state.name) {
       alert("Você se esqueceu do nome da lista!");
     } else {
       this.props.addTodo(this.state.name, this.state.tasks);
     }
+
     this.setState({ name: "", tasks: [], taskCounter: [] });
+
+    e.preventDefault();
+    return false;
   };
 
   render() {
     return (
-      <div>
+      <form>
         <input
           onChange={(e) => this.updateInput(e.target.value)}
-          value={this.state.input}
+          value={this.state.name}
           placeholder="Nome da Lista"
         />
-        <button onClick={() => this.updateCounter()}>+</button>
+        <button onClick={this.updateCounter.bind(this)}>+</button>
         {this.state.taskCounter.map((input, index) => {
           return (
-            <AddTaskInput key={index} id={index} update={this.updateTask} />
+            <AddTaskInput
+              key={index}
+              id={index}
+              update={this.updateTask.bind(this)}
+            />
           );
         })}
-        <button className="add-todo" onClick={this.handleAddTodo}>
+        <button
+          type="submit"
+          className="add-todo"
+          onClick={this.handleAddTodo.bind(this)}
+        >
           Criar
         </button>
-      </div>
+      </form>
     );
   }
 }
