@@ -1,4 +1,4 @@
-import { ADD_TODO, RENAME_TODO } from "../actionTypes";
+import { ADD_TODO, RENAME_TODO, ADD_TASK, REMOVE_TASK } from "../actionTypes";
 
 const initialState = {
   allIds: [0, 1, 2],
@@ -47,6 +47,34 @@ export default function (state = initialState, action) {
           [id]: {
             ...state.byIds[id],
             name,
+          },
+        },
+      };
+    }
+    case ADD_TASK: {
+      const { parentId, task } = action.payload;
+      return {
+        ...state,
+        byIds: {
+          ...state.byIds,
+          [parentId]: {
+            ...state.byIds[parentId],
+            tasks: [...state.byIds[parentId].tasks, task],
+          },
+        },
+      };
+    }
+    case REMOVE_TASK: {
+      const { parentId, id } = action.payload;
+      const task = state.byIds[parentId].tasks;
+
+      return {
+        ...state,
+        byIds: {
+          ...state.byIds,
+          [parentId]: {
+            ...state.byIds[parentId],
+            tasks: [task.slice(0, id), task.slice(id + 1)],
           },
         },
       };

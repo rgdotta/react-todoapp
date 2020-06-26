@@ -1,4 +1,4 @@
-import { ADD_TODO, RENAME_TODO } from "./actionTypes";
+import { ADD_TODO, RENAME_TODO, ADD_TASK, REMOVE_TASK } from "./actionTypes";
 
 let nextTodoId = 3;
 
@@ -16,5 +16,21 @@ export const renameTodo = (id, name) => ({
   payload: {
     id,
     name,
+  },
+});
+
+export const addTask = (parentId, task) => ({
+  type: ADD_TASK,
+  payload: {
+    parentId,
+    task,
+  },
+});
+
+export const removeTask = (parentId, id) => ({
+  type: REMOVE_TASK,
+  payload: {
+    parentId,
+    id,
   },
 });

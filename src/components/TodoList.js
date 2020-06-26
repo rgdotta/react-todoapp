@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import Todo from "./Todo";
-import { renameTodo } from "../redux/actions";
+import { renameTodo, addTask, removeTask } from "../redux/actions";
 
-const TodoList = ({ todos, renameTodo }) => {
+const TodoList = ({ todos, renameTodo, addTask, removeTask }) => {
   return (
     <ul className="todo-list">
       {todos && todos.length
@@ -13,6 +13,8 @@ const TodoList = ({ todos, renameTodo }) => {
                 key={`todo-${todo.id}`}
                 todo={todo}
                 renameTodo={renameTodo}
+                addTask={addTask}
+                removeTask={removeTask}
               />
             );
           })
@@ -30,6 +32,6 @@ const mapStateToProps = (state) => {
   return { todos };
 };
 
-const mapDispatchToProps = { renameTodo };
+const mapDispatchToProps = { renameTodo, addTask, removeTask };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

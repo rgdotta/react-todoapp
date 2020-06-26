@@ -56,11 +56,14 @@ const Task = (props) => {
       </p>
       {props.editable && (
         <div>
-          <input
-            value={subtask}
-            onChange={(e) => handleChange(e.target.value)}
-          ></input>
-          <button onClick={addSubtask}>Adicionar</button>
+          <button onClick={() => props.delete(props.task.id)}>X</button>
+          <div>
+            <input
+              value={subtask}
+              onChange={(e) => handleChange(e.target.value)}
+            ></input>
+            <button onClick={addSubtask}>Adicionar</button>
+          </div>
         </div>
       )}
       <ul>
