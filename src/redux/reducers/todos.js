@@ -68,13 +68,20 @@ export default function (state = initialState, action) {
       const { parentId, id } = action.payload;
       const task = state.byIds[parentId].tasks;
 
+      const findIndex = task.findIndex((task) => {
+        return task.id === id;
+      });
+
+      const newTasks = [...task];
+      newTasks.splice(findIndex, 1);
+
       return {
         ...state,
         byIds: {
           ...state.byIds,
           [parentId]: {
             ...state.byIds[parentId],
-            tasks: [task.slice(0, id), task.slice(id + 1)],
+            tasks: [...newTasks],
           },
         },
       };

@@ -75,6 +75,7 @@ const Todo = ({ todo, renameTodo, addTask, removeTask }) => {
           <button onClick={submitNewTask}>Adicionar Tarefa</button>
         </div>
       )}
+      {console.log(todo)}
       <ul>
         {todo.tasks &&
           todo.tasks.map((task, index) => {
@@ -86,11 +87,11 @@ const Todo = ({ todo, renameTodo, addTask, removeTask }) => {
                   editable={isEditable}
                   delete={deleteTask}
                 />
+                {console.log(task)}
               </div>
             );
           })}
       </ul>
-      {console.log(todo)}
     </li>
   );
 };
