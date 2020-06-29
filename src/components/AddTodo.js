@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { addTodo } from "../redux/actions";
-import AddTaskInput from "./AddTaskInput";
 
 class AddTodo extends React.Component {
   constructor(props) {
@@ -12,15 +11,33 @@ class AddTodo extends React.Component {
       taskCounter: [],
     };
     this.updateInput = this.updateInput.bind(this);
+    this.updateTask = this.updateTask.bind(this);
   }
 
   updateInput = (input) => {
     this.setState({ name: input });
   };
 
-  updateTask = (task) => {
-    const list = [...this.state.tasks, task];
-    this.setState({ tasks: list });
+  updateTask = (task, id) => {
+    var loop = true;
+    const list = [...this.state.tasks];
+    if (this.state.tasks.length > 0) {
+      list.forEach((existingTask) => {
+        if (existingTask.id === id) {
+          list.splice(existingTask.id, 1, { id: id, name: task });
+          this.setState({ tasks: list });
+          loop = false;
+        } else if (existingTask.id !== id && loop === true) {
+          this.setState({
+            tasks: [...this.state.tasks, { id: id, name: task }],
+          });
+        }
+      });
+    } else {
+      this.setState({
+        tasks: [{ id: id, name: task }],
+      });
+    }
   };
 
   updateCounter = (e) => {
@@ -64,10 +81,12 @@ class AddTodo extends React.Component {
         <button onClick={this.updateCounter.bind(this)}>+</button>
         {this.state.taskCounter.map((input, index) => {
           return (
-            <AddTaskInput
+            <input
               key={index}
-              id={index}
-              update={this.updateTask.bind(this)}
+              onChange={(e) => {
+                this.updateTask(e.target.value, index);
+              }}
+              type="text"
             />
           );
         })}
