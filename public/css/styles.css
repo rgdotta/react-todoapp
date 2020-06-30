@@ -1,6 +1,6 @@
 @font-face {
   font-family: "SF-Pro-Display";
-  src: url("./fonts/SF-Pro-Display-Medium.otf") format("otf");
+  src: url("./fonts/SF-Pro-Display-Light.otf") format("opentype");
 }
 
 body {
@@ -22,6 +22,10 @@ ul {
   background-color: #ffffff;
   border: none;
   cursor: pointer;
+}
+
+.containerMaxWidth {
+  max-width: 750px !important;
 }
 
 /* header */
@@ -48,31 +52,14 @@ ul {
 .userText {
   color: #d5d392;
   margin-left: 7px;
+  font-size: 18px;
+  font-weight: bolder;
 }
 
 .userImg {
+  margin: auto;
   width: 50px;
   height: 50px;
-}
-
-@media only screen and (min-width: 768px) {
-  .headerBackground,
-  .headerContainer {
-    height: 100px;
-  }
-
-  .flex,
-  .logo {
-    margin: auto 0;
-  }
-
-  .user {
-    margin: auto 0 auto auto;
-  }
-
-  .headerContainer {
-    flex-direction: row;
-  }
 }
 
 /* List */
@@ -92,7 +79,8 @@ ul {
   border-bottom: 2px solid #b4d9cb;
 }
 
-.todoContainer {
+.todoContainer,
+.listMainTitleContainer {
   flex-direction: row;
 }
 
@@ -114,5 +102,91 @@ ul {
 
 .listTitle p {
   margin: 8px 0;
-  font-size: 20px;
+  font-size: 24px;
+}
+
+.mainTitle h1 {
+  font-weight: normal;
+  font-size: 30px;
+  color: #383428;
+  margin: 5px 0;
+}
+
+.createBtn {
+  display: flex;
+  justify-content: end;
+}
+
+.createBtn,
+.mainTitle {
+  width: 50%;
+}
+
+.defaultInput {
+  height: 30px;
+  width: 80%;
+  border: 1px solid #ef7734;
+  padding-right: 50px;
+  padding-left: 10px;
+  margin: 10px;
+  border-radius: 7px;
+}
+
+.submitBtn {
+  margin-left: -53px;
+  height: 31px;
+  margin-top: 12px !important;
+}
+
+.renameInput {
+  margin-top: 50px !important;
+}
+
+.renameBtn {
+  margin-top: 52px !important ;
+  background-color: #ffffff !important;
+  color: #ef7734 !important;
+  margin-left: -76px !important;
+}
+
+/* Media Query */
+@media only screen and (min-width: 768px) {
+  .headerBackground,
+  .headerContainer {
+    height: 100px;
+  }
+
+  .flex,
+  .logo {
+    margin: auto 0;
+  }
+
+  .user {
+    margin: auto 0 auto auto;
+  }
+
+  .headerContainer {
+    flex-direction: row;
+  }
+
+  .todoMain {
+    width: 85%;
+  }
+
+  .listIcon {
+    width: 5%;
+  }
+
+  .btnRow {
+    width: 10%;
+  }
+
+  .renameBtn {
+    margin-top: 12px !important;
+    margin-left: -82px !important;
+  }
+
+  .renameInput {
+    margin-top: 10px !important;
+  }
 }

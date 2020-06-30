@@ -1,12 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import Todo from "./Todo";
+import AddTodo from "./AddTodo";
 import { removeTodo, renameTodo, addTask, removeTask } from "../redux/actions";
 import { Container } from "@material-ui/core";
+import createIcon from "../images/botao_adicionar.png";
 
 const TodoList = ({ todos, removeTodo, renameTodo, addTask, removeTask }) => {
+  const [createList, setCreateList] = useState(false);
+
   return (
-    <Container maxWidth="md">
+    <Container className="containerMaxWidth">
+      {createList && (
+        <div>
+          <AddTodo />
+          <button onClick={() => setCreateList(false)}>Esconder</button>
+        </div>
+      )}
+      <div className="flex listMainTitleContainer">
+        <div className="mainTitle">
+          <h1>Listas</h1>
+        </div>
+        {!createList && (
+          <div className="createBtn">
+            <button className="noStyleBtn" onClick={() => setCreateList(true)}>
+              <img src={createIcon} alt="new list" />
+            </button>
+          </div>
+        )}
+      </div>
       <div className="listContainer">
         <ul className="todo-list">
           {todos && todos.length

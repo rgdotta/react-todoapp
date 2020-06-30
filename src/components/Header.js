@@ -6,7 +6,7 @@ import userAvatar from "../images/avatar.png";
 function Header() {
   return (
     <div className="headerBackground">
-      <Container maxWidth="md">
+      <Container className="containerMaxWidth">
         <div className="flex headerContainer">
           <div className="flex">
             <img className="logo" src={logo} alt="logo" />

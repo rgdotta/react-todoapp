@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import Task from "./Task";
+import { Button } from "@material-ui/core";
 import listIcon from "../images/icone_lista.png";
 import editIcon from "../images/icone_editar.png";
 import deleteIcon from "../images/icone_deletar_lista.png";
+import createIcon from "../images/botao_adicionar.png";
 
 const Todo = ({ todo, removeTodo, renameTodo, addTask, removeTask }) => {
   const [isEditable, setEditable] = useState(false);
@@ -39,9 +41,10 @@ const Todo = ({ todo, removeTodo, renameTodo, addTask, removeTask }) => {
     setNewName(name);
   }
 
-  function submitNewName() {
+  function submitNewName(e) {
     renameTodo(todo.id, newName);
     setRename(!rename);
+    e.preventDefault();
   }
 
   function deleteTask(id) {
@@ -58,16 +61,24 @@ const Todo = ({ todo, removeTodo, renameTodo, addTask, removeTask }) => {
           <div className="listTitle">
             {isEditable ? (
               <div>
-                {rename ? (
-                  <input
-                    type="text"
-                    placeholder={todo.name}
-                    onChange={handleNameChange}
-                  />
-                ) : (
-                  <p>{todo.name}</p>
-                )}
-                <button onClick={submitNewName}>Renomear</button>
+                <form className="flex">
+                  {rename ? (
+                    <input
+                      className="defaultInput renameInput"
+                      type="text"
+                      placeholder={todo.name}
+                      onChange={handleNameChange}
+                    />
+                  ) : (
+                    <p>{todo.name}</p>
+                  )}
+                  <Button
+                    className="submitBtn renameBtn"
+                    onClick={(e) => submitNewName(e)}
+                  >
+                    Editar
+                  </Button>
+                </form>
               </div>
             ) : (
               <p>{todo.name}</p>
@@ -75,14 +86,20 @@ const Todo = ({ todo, removeTodo, renameTodo, addTask, removeTask }) => {
           </div>
           {isEditable && (
             <div>
-              <form>
+              <form className="flex">
                 <input
+                  className="defaultInput"
                   type="text"
                   value={newTask.name}
                   onChange={handleAddTask}
+                  placeholder="Adicionar Tarefa"
                 />
-                <button type="submit" onClick={(e) => submitNewTask(e)}>
-                  Adicionar Tarefa
+                <button
+                  className="submitBtn noStyleBtn"
+                  type="submit"
+                  onClick={(e) => submitNewTask(e)}
+                >
+                  <img src={createIcon} alt="Add tarefa" />
                 </button>
               </form>
             </div>
