@@ -1,10 +1,16 @@
-import { ADD_TODO, RENAME_TODO, ADD_TASK, REMOVE_TASK } from "../actionTypes";
+import {
+  ADD_TODO,
+  REMOVE_TODO,
+  RENAME_TODO,
+  ADD_TASK,
+  REMOVE_TASK,
+} from "../actionTypes";
 
 const initialState = {
   allIds: [0, 1, 2],
   byIds: {
     0: {
-      name: "Trabalho",
+      name: "Lista 1",
       tasks: [
         { id: 0, name: "Tarefa 1" },
         { id: 1, name: "Tarefa 2" },
@@ -12,11 +18,11 @@ const initialState = {
       ],
     },
     1: {
-      name: "Afazeres da Casa",
+      name: "Lista 2",
       tasks: [],
     },
     2: {
-      name: "Compras",
+      name: "Lista 3",
       tasks: [],
     },
   },
@@ -35,6 +41,29 @@ export default function (state = initialState, action) {
             name,
             tasks,
           },
+        },
+      };
+    }
+    case REMOVE_TODO: {
+      const { id } = action.payload;
+      const todosById = state.allIds;
+
+      const findIndex = todosById.findIndex((todo) => {
+        return todo === id;
+      });
+
+      console.log(state.allIds, findIndex);
+
+      const newAllIds = [...state.allIds];
+      newAllIds.splice(findIndex, 1);
+
+      const { [id]: toDelete, ...newByIds } = state.byIds;
+
+      return {
+        ...state,
+        allIds: [...newAllIds],
+        byIds: {
+          ...newByIds,
         },
       };
     }

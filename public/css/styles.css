@@ -1,0 +1,118 @@
+@font-face {
+  font-family: "SF-Pro-Display";
+  src: url("./fonts/SF-Pro-Display-Medium.otf") format("otf");
+}
+
+body {
+  margin: 0;
+  font-family: "SF-Pro-Display", sans-serif !important;
+}
+
+.flex {
+  display: flex;
+  margin: auto;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+.noStyleBtn {
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+/* header */
+.headerBackground {
+  margin-bottom: 70px;
+  height: 150px;
+  background-color: #574437;
+}
+
+.headerContainer {
+  flex-direction: column;
+  height: 150px;
+}
+
+.logo {
+  width: 70%;
+  margin: auto;
+}
+
+.user {
+  flex-direction: row;
+}
+
+.userText {
+  color: #d5d392;
+  margin-left: 7px;
+}
+
+.userImg {
+  width: 50px;
+  height: 50px;
+}
+
+@media only screen and (min-width: 768px) {
+  .headerBackground,
+  .headerContainer {
+    height: 100px;
+  }
+
+  .flex,
+  .logo {
+    margin: auto 0;
+  }
+
+  .user {
+    margin: auto 0 auto auto;
+  }
+
+  .headerContainer {
+    flex-direction: row;
+  }
+}
+
+/* List */
+.todo-list {
+  margin: 0 !important;
+}
+
+.listContainer {
+  border: 2px solid #b4d9cb;
+  border-radius: 7px;
+  margin: auto;
+  color: #383428;
+}
+
+.todoItem {
+  padding: 0 10px;
+  border-bottom: 2px solid #b4d9cb;
+}
+
+.todoContainer {
+  flex-direction: row;
+}
+
+.todoMain {
+  width: 70%;
+}
+
+.btnRow {
+  flex-direction: row;
+  width: 20%;
+  justify-content: end;
+  margin-top: 8px !important;
+}
+
+.listIcon {
+  width: 10%;
+  margin-top: 12px !important;
+}
+
+.listTitle p {
+  margin: 8px 0;
+  font-size: 20px;
+}

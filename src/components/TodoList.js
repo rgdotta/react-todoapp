@@ -1,25 +1,31 @@
 import React from "react";
 import { connect } from "react-redux";
 import Todo from "./Todo";
-import { renameTodo, addTask, removeTask } from "../redux/actions";
+import { removeTodo, renameTodo, addTask, removeTask } from "../redux/actions";
+import { Container } from "@material-ui/core";
 
-const TodoList = ({ todos, renameTodo, addTask, removeTask }) => {
+const TodoList = ({ todos, removeTodo, renameTodo, addTask, removeTask }) => {
   return (
-    <ul className="todo-list">
-      {todos && todos.length
-        ? todos.map((todo, index) => {
-            return (
-              <Todo
-                key={`todo-${todo.id}`}
-                todo={todo}
-                renameTodo={renameTodo}
-                addTask={addTask}
-                removeTask={removeTask}
-              />
-            );
-          })
-        : ""}
-    </ul>
+    <Container maxWidth="md">
+      <div className="listContainer">
+        <ul className="todo-list">
+          {todos && todos.length
+            ? todos.map((todo, index) => {
+                return (
+                  <Todo
+                    key={`todo-${todo.id}`}
+                    todo={todo}
+                    removeTodo={removeTodo}
+                    renameTodo={renameTodo}
+                    addTask={addTask}
+                    removeTask={removeTask}
+                  />
+                );
+              })
+            : ""}
+        </ul>
+      </div>
+    </Container>
   );
 };
 
@@ -32,6 +38,6 @@ const mapStateToProps = (state) => {
   return { todos };
 };
 
-const mapDispatchToProps = { renameTodo, addTask, removeTask };
+const mapDispatchToProps = { removeTodo, renameTodo, addTask, removeTask };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
