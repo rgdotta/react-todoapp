@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Checkbox } from "@material-ui/core";
+import deleteIcon from "../images/icone_deletar_tarefa-subtarefa.png";
 
 const Subtask = (props) => {
   const [isComplete, setComplete] = useState(false);
@@ -14,15 +16,21 @@ const Subtask = (props) => {
   }
 
   return (
-    <li>
+    <li className="subTask flex row">
+      <Checkbox className="taskCheckbox" onClick={completeTask} />
       <p
+        className="taskBody"
         style={{ textDecoration: isComplete ? "line-through" : "none" }}
-        onClick={completeTask}
       >
         {props.subtask}
       </p>
       {props.editable && (
-        <button onClick={() => props.delete(props.subtask)}>X</button>
+        <button
+          className="taskDeleteBtn noStyleBtn"
+          onClick={() => props.delete(props.subtask)}
+        >
+          <img src={deleteIcon} alt="delete" />
+        </button>
       )}
     </li>
   );

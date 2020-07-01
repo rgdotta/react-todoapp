@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import Subtask from "./Subtask";
+import { Checkbox, Collapse } from "@material-ui/core";
+import deleteIcon from "../images/icone_deletar_tarefa-subtarefa.png";
+import createIcon from "../images/botao_adicionar.png";
 
 const Task = (props) => {
   const [subtasksList, setSubtasksList] = useState([]);
@@ -11,7 +14,7 @@ const Task = (props) => {
     setSubtask(input);
   }
 
-  function addSubtask() {
+  function addSubtask(e) {
     const newSubtask = subtask;
 
     setSubtasksList((prevSubtasks) => {
@@ -19,6 +22,8 @@ const Task = (props) => {
     });
 
     setSubtask("");
+
+    e.preventDefault();
   }
 
   function completeTask() {
@@ -47,38 +52,64 @@ const Task = (props) => {
   }
 
   return (
-    <li>
-      <p
-        style={{ textDecoration: isComplete ? "line-through" : "none" }}
-        onClick={completeTask}
+    <li className="task">
+      <div
+        className="flex row"
+        style={{
+          borderBottom: subtasksList.length > 0 ? "2px solid #b4d9cb" : "none",
+        }}
       >
-        {props.task.name}
-      </p>
-      {props.editable && (
-        <div>
-          <button onClick={() => props.delete(props.task.id)}>X</button>
-          <div>
-            <input
-              value={subtask}
-              onChange={(e) => handleChange(e.target.value)}
-            ></input>
-            <button onClick={addSubtask}>Adicionar</button>
-          </div>
-        </div>
-      )}
-      <ul>
-        {subtasksList.map((thisSubtask, index) => {
-          return (
-            <Subtask
-              key={index}
-              subtask={thisSubtask}
-              complete={subtaskCompleted}
-              editable={props.editable}
-              delete={deleteSubtask}
-            />
-          );
-        })}
-      </ul>
+        <Checkbox
+          className="taskCheckbox"
+          onClick={completeTask}
+          checked={isComplete === true}
+        />
+        <p
+          className="taskBody"
+          style={{ textDecoration: isComplete ? "line-through" : "none" }}
+        >
+          {props.task.name}
+        </p>
+        {props.editable && (
+          <button
+            className="noStyleBtn taskDeleteBtn"
+            onClick={() => props.delete(props.task.id)}
+          >
+            <img src={deleteIcon} alt="delete" />
+          </button>
+        )}
+      </div>
+      <div>
+        <ul style={{ marginLeft: "20px" }}>
+          {subtasksList.map((thisSubtask, index) => {
+            return (
+              <Subtask
+                key={index}
+                subtask={thisSubtask}
+                complete={subtaskCompleted}
+                editable={props.editable}
+                delete={deleteSubtask}
+              />
+            );
+          })}
+        </ul>
+      </div>
+      <Collapse in={props.editable}>
+        <form className="flex">
+          <input
+            className="taskInput defaultInput"
+            value={subtask}
+            onChange={(e) => handleChange(e.target.value)}
+            placeholder="Adicionar Subtarefa"
+          ></input>
+          <button
+            className="submitBtn noStyleBtn"
+            onClick={(e) => addSubtask(e)}
+          >
+            <img src={createIcon} alt="Add Tarefa" />
+          </button>
+        </form>
+      </Collapse>
     </li>
   );
 };

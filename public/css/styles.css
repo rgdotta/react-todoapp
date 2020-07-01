@@ -13,6 +13,14 @@ body {
   margin: auto;
 }
 
+.row {
+  flex-direction: row;
+}
+
+.column {
+  flex-direction: column;
+}
+
 ul {
   padding: 0;
   list-style: none;
@@ -30,7 +38,7 @@ ul {
 
 /* header */
 .headerBackground {
-  margin-bottom: 70px;
+  margin-bottom: 40px;
   height: 150px;
   background-color: #574437;
 }
@@ -97,7 +105,7 @@ ul {
 
 .listIcon {
   width: 10%;
-  margin-top: 12px !important;
+  margin-top: 15px !important;
 }
 
 .listTitle p {
@@ -105,7 +113,8 @@ ul {
   font-size: 24px;
 }
 
-.mainTitle h1 {
+.mainTitle h1,
+.createTitle {
   font-weight: normal;
   font-size: 30px;
   color: #383428;
@@ -114,7 +123,7 @@ ul {
 
 .createBtn {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .createBtn,
@@ -123,19 +132,23 @@ ul {
 }
 
 .defaultInput {
-  height: 30px;
+  height: 40px;
   width: 80%;
   border: 1px solid #ef7734;
   padding-right: 50px;
   padding-left: 10px;
   margin: 10px;
-  border-radius: 7px;
+  border-radius: 5px;
+}
+
+.defaultInput:focus {
+  outline: none;
 }
 
 .submitBtn {
   margin-left: -53px;
   height: 31px;
-  margin-top: 12px !important;
+  margin-top: 17px !important;
 }
 
 .renameInput {
@@ -143,10 +156,80 @@ ul {
 }
 
 .renameBtn {
-  margin-top: 52px !important ;
+  margin-top: 58px !important ;
   background-color: #ffffff !important;
   color: #ef7734 !important;
   margin-left: -76px !important;
+}
+
+.taskCheckbox {
+  width: 5%;
+  border: #b4d9cb;
+}
+
+.taskBody {
+  width: 85%;
+  margin: auto 0;
+}
+
+.taskDeleteBtn {
+  width: 10%;
+}
+
+.task {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.taskInput {
+  width: 75%;
+  margin-left: 20px;
+}
+
+.subTask {
+  font-size: 16px;
+}
+
+/* Create List */
+
+.createInput {
+  margin: 5px 0;
+}
+
+.addTaskBtn {
+  margin-top: 13px !important;
+  margin-left: -40px;
+}
+
+.addTodoBtnContainer {
+  justify-content: center;
+  height: 70px;
+  flex-direction: column;
+  margin-top: 30px;
+  margin-bottom: 70px;
+}
+
+.addTodoBtnContainer div {
+  text-align: center;
+  width: 70%;
+  margin: 5px auto;
+}
+
+.addTodoBtnContainer button {
+  width: 100%;
+  margin: auto;
+  justify-content: center;
+  height: 50px;
+}
+
+.cancelAdd {
+  background-color: #b7cf51 !important;
+  color: #574437 !important;
+}
+
+.add-todo {
+  background-color: #ef7734 !important;
+  color: #ffffff !important;
 }
 
 /* Media Query */
@@ -182,11 +265,42 @@ ul {
   }
 
   .renameBtn {
-    margin-top: 12px !important;
+    margin-top: 17px !important;
     margin-left: -82px !important;
   }
 
   .renameInput {
     margin-top: 10px !important;
+  }
+
+  .taskInput {
+    width: 76%;
+    margin-left: 30px;
+  }
+
+  .createInput {
+    width: 91%;
+  }
+
+  .addTodoBtnContainer {
+    flex-direction: row;
+    margin-top: 20px;
+    margin-bottom: 70px;
+  }
+
+  .addTodoBtnContainer button {
+    width: 70%;
+  }
+
+  .addTodoBtnContainer div {
+    margin: 5px 10px;
+  }
+
+  .addTodoDiv {
+    text-align: left !important;
+  }
+
+  .cancelTodoDiv {
+    text-align: right !important;
   }
 }

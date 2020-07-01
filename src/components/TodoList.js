@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Todo from "./Todo";
 import AddTodo from "./AddTodo";
 import { removeTodo, renameTodo, addTask, removeTask } from "../redux/actions";
-import { Container } from "@material-ui/core";
+import { Container, Collapse } from "@material-ui/core";
 import createIcon from "../images/botao_adicionar.png";
 
 const TodoList = ({ todos, removeTodo, renameTodo, addTask, removeTask }) => {
@@ -11,12 +11,9 @@ const TodoList = ({ todos, removeTodo, renameTodo, addTask, removeTask }) => {
 
   return (
     <Container className="containerMaxWidth">
-      {createList && (
-        <div>
-          <AddTodo />
-          <button onClick={() => setCreateList(false)}>Esconder</button>
-        </div>
-      )}
+      <Collapse in={createList}>
+        <AddTodo cancel={() => setCreateList(false)} />
+      </Collapse>
       <div className="flex listMainTitleContainer">
         <div className="mainTitle">
           <h1>Listas</h1>

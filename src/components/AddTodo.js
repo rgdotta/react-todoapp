@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { addTodo } from "../redux/actions";
+import createIcon from "../images/botao_adicionar.png";
+import { Button } from "@material-ui/core";
 
 class AddTodo extends React.Component {
   constructor(props) {
@@ -8,10 +10,11 @@ class AddTodo extends React.Component {
     this.state = {
       name: "",
       tasks: [],
-      taskCounter: [],
+      taskCounter: [0],
     };
     this.updateInput = this.updateInput.bind(this);
     this.updateTask = this.updateTask.bind(this);
+    this.updateCounter = this.updateCounter.bind(this);
   }
 
   updateInput = (input) => {
@@ -20,12 +23,16 @@ class AddTodo extends React.Component {
 
   updateTask = (task, id) => {
     var loop = true;
+
     const list = [...this.state.tasks];
+
     if (this.state.tasks.length > 0) {
       list.forEach((existingTask) => {
+        //verifica se a tarefa do input já existe para atualiza-la no estado local antes de jogar para o store do redux
         if (existingTask.id === id) {
           list.splice(existingTask.id, 1, { id: id, name: task });
           this.setState({ tasks: list });
+
           loop = false;
         } else if (existingTask.id !== id && loop === true) {
           this.setState({
@@ -44,11 +51,8 @@ class AddTodo extends React.Component {
     const count = this.state.taskCounter;
     var newCount;
 
-    if (!count) {
-      newCount = 0;
-    } else {
-      newCount = count[count.length - 1] + 1;
-    }
+    newCount = count[count.length - 1] + 1;
+
     console.log(newCount);
 
     const list = [...count, newCount];
@@ -72,32 +76,55 @@ class AddTodo extends React.Component {
 
   render() {
     return (
-      <form>
-        <input
-          onChange={(e) => this.updateInput(e.target.value)}
-          value={this.state.name}
-          placeholder="Nome da Lista"
-        />
-        <button onClick={this.updateCounter.bind(this)}>+</button>
-        {this.state.taskCounter.map((input, index) => {
-          return (
-            <input
-              key={index}
-              onChange={(e) => {
-                this.updateTask(e.target.value, index);
-              }}
-              type="text"
-            />
-          );
-        })}
-        <button
-          type="submit"
-          className="add-todo"
-          onClick={this.handleAddTodo.bind(this)}
-        >
-          Criar
-        </button>
-      </form>
+      <div>
+        <h1 className="createTitle">Criar Lista</h1>
+        <form>
+          <input
+            className="defaultInput createInput"
+            onChange={(e) => this.updateInput(e.target.value)}
+            value={this.state.name}
+            placeholder="Digite o nome da lista..."
+          />
+          {this.state.taskCounter.map((input, index) => {
+            return (
+              <div className="flex" key={index}>
+                <input
+                  className="defaultInput createInput"
+                  onChange={(e) => {
+                    this.updateTask(e.target.value, index);
+                  }}
+                  type="text"
+                  placeholder="Adicionar tarefa"
+                />
+                {index === this.state.taskCounter.length - 1 && (
+                  <button
+                    className="submitBtn noStyleBtn addTaskBtn"
+                    onClick={(e) => this.updateCounter(e)}
+                  >
+                    <img src={createIcon} alt="Add tarefa" />
+                  </button>
+                )}
+              </div>
+            );
+          })}
+          <div className="flex addTodoBtnContainer">
+            <div className="cancelTodoDiv">
+              <Button className="cancelAdd" onClick={this.props.cancel}>
+                Cancelar
+              </Button>
+            </div>
+            <div className="addTodoDiv">
+              <Button
+                type="submit"
+                className="add-todo"
+                onClick={this.handleAddTodo.bind(this)}
+              >
+                Criar
+              </Button>
+            </div>
+          </div>
+        </form>
+      </div>
     );
   }
 }
