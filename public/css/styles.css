@@ -222,14 +222,104 @@ ul {
   height: 50px;
 }
 
-.cancelAdd {
+.greenBtn {
   background-color: #b7cf51 !important;
   color: #574437 !important;
+  text-transform: none !important;
 }
 
-.add-todo {
+.orangeBtn {
   background-color: #ef7734 !important;
   color: #ffffff !important;
+  text-transform: none !important;
+}
+
+/* Home */
+.bg {
+  display: flex;
+  height: 762px;
+}
+
+.bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  z-index: -1;
+  background-image: url("./bg.png");
+}
+
+.imgsContainer {
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 100px !important;
+}
+
+.imgsContainer img {
+  width: 80%;
+  margin: 40px auto auto auto;
+}
+
+.homeBtnContainer {
+  align-items: center;
+  margin-top: 50px !important;
+}
+
+.btnSize {
+  width: 200px;
+  height: 45px;
+  margin: 10px auto auto auto !important;
+  font-size: 17px !important;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Registrar e Login */
+.formContainer {
+  height: 570px;
+  width: 100%;
+  background-color: #f9f4c2;
+  margin-top: 30px;
+  border-radius: 5px;
+  box-shadow: 0 5px 2px lightgray;
+}
+
+.formMargin {
+  margin-top: 40px !important;
+}
+
+.formStyle {
+  align-items: center;
+}
+
+.formStyle p {
+  font-size: 30px;
+  color: #383428;
+}
+
+.formInput {
+  margin: 5px auto;
+  height: 40px;
+  width: 250px;
+  padding-left: 15px;
+  font-size: 17px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.formInput::placeholder {
+  color: #383428;
+}
+
+.errorText {
+  font-size: 14px !important;
+  color: red !important;
+  margin: 0;
 }
 
 /* Media Query */
@@ -302,5 +392,22 @@ ul {
 
   .cancelTodoDiv {
     text-align: right !important;
+  }
+
+  .imgsContainer img {
+    width: 50%;
+  }
+
+  .signUpMargin img {
+    width: 45%;
+  }
+
+  .btnSize {
+    width: 250px;
+    height: 55px;
+  }
+
+  .formInput {
+    width: 350px;
   }
 }

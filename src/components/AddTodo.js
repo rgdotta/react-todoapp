@@ -66,9 +66,8 @@ class AddTodo extends React.Component {
       alert("Você se esqueceu do nome da lista!");
     } else {
       this.props.addTodo(this.state.name, this.state.tasks);
+      this.setState({ name: "", tasks: [], taskCounter: [0] });
     }
-
-    this.setState({ name: "", tasks: [], taskCounter: [] });
 
     e.preventDefault();
     return false;
@@ -109,14 +108,14 @@ class AddTodo extends React.Component {
           })}
           <div className="flex addTodoBtnContainer">
             <div className="cancelTodoDiv">
-              <Button className="cancelAdd" onClick={this.props.cancel}>
+              <Button className="greenBtn" onClick={this.props.cancel}>
                 Cancelar
               </Button>
             </div>
             <div className="addTodoDiv">
               <Button
                 type="submit"
-                className="add-todo"
+                className="orangeBtn"
                 onClick={this.handleAddTodo.bind(this)}
               >
                 Criar
