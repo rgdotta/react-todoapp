@@ -3,6 +3,8 @@
 Mini App de lista de tarefas criado para o processo seletivo na empresa Autoseg.
 Permite a criação de listas com tarefas e subtarefas.
 
+Acesse no heroku em: https://doitnow123.herokuapp.com/
+
 ## Download
 
 Na paste designada, clone o repositório usando o seguinte código no seu terminal:
