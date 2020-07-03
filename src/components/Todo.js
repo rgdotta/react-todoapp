@@ -102,7 +102,6 @@ const Todo = ({ todo, removeTodo, renameTodo, addTask, removeTask }) => {
               </button>
             </form>
           </Collapse>
-          {console.log(todo)}
           <ul className="taskList">
             {todo.tasks &&
               todo.tasks.map((task, index) => {
@@ -114,7 +113,6 @@ const Todo = ({ todo, removeTodo, renameTodo, addTask, removeTask }) => {
                       editable={isEditable}
                       delete={deleteTask}
                     />
-                    {console.log(task)}
                   </div>
                 );
               })}
