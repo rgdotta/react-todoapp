@@ -4,6 +4,8 @@ import {
   RENAME_TODO,
   ADD_TASK,
   REMOVE_TASK,
+  ADD_SUBTASK,
+  REMOVE_SUBTASK,
 } from "./actionTypes";
 
 export const addTodo = (name, tasks) => ({
@@ -41,6 +43,22 @@ export const removeTask = (parentId, id) => ({
   type: REMOVE_TASK,
   payload: {
     parentId,
+    id,
+  },
+});
+
+export const addSubtask = (listId, subtask) => ({
+  type: ADD_SUBTASK,
+  payload: {
+    listId,
+    subtask,
+  },
+});
+
+export const removeSubtask = (listId, id) => ({
+  type: REMOVE_SUBTASK,
+  payload: {
+    listId,
     id,
   },
 });

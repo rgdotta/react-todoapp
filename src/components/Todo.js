@@ -112,6 +112,8 @@ const Todo = ({ todo, removeTodo, renameTodo, addTask, removeTask }) => {
                       task={task}
                       editable={isEditable}
                       delete={deleteTask}
+                      subtasks={todo.subtasks}
+                      listId={todo.id}
                     />
                   </div>
                 );

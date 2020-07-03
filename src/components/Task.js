@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import { addSubtask, removeSubtask } from "../redux/actions";
 import Subtask from "./Subtask";
 import { Checkbox, Collapse } from "@material-ui/core";
 import deleteIcon from "../images/icone_deletar_tarefa-subtarefa.png";
 import createIcon from "../images/botao_adicionar.png";
 
 const Task = (props) => {
-  const [subtasksList, setSubtasksList] = useState([]);
   const [subtask, setSubtask] = useState("");
   const [isComplete, setComplete] = useState(false);
   const [completedTask, setCompletedTask] = useState(0);
@@ -14,12 +15,18 @@ const Task = (props) => {
     setSubtask(input);
   }
 
-  function addSubtask(e) {
-    const newSubtask = subtask;
+  function submitSubtask(e) {
+    var newId;
+    if (props.subtasks.length > 0) {
+      const getLastId = props.subtasks.slice().reverse();
+      const lastId = getLastId[0].id;
+      newId = lastId + 1;
+    } else {
+      newId = 0;
+    }
+    const newSubtask = { id: newId, taskId: props.task.id, name: subtask };
 
-    setSubtasksList((prevSubtasks) => {
-      return [...prevSubtasks, newSubtask];
-    });
+    props.addSubtask(props.listId, newSubtask);
 
     setSubtask("");
 
@@ -30,8 +37,12 @@ const Task = (props) => {
     setComplete(!isComplete);
   }
 
+  const filteredSubtasks = props.subtasks.filter(
+    (subtask) => subtask.taskId === props.task.id
+  );
+
   function subtaskCompleted(completed) {
-    const comparison = subtasksList.length;
+    const comparison = filteredSubtasks.length;
     let value = completed;
 
     let newValue = completedTask + value;
@@ -45,10 +56,7 @@ const Task = (props) => {
   }
 
   function deleteSubtask(toDelete) {
-    let array = subtasksList;
-    let filteredArray = array.filter((e) => e !== toDelete);
-
-    setSubtasksList(filteredArray);
+    props.removeSubtask(props.listId, toDelete);
   }
 
   return (
@@ -56,7 +64,8 @@ const Task = (props) => {
       <div
         className="flex row"
         style={{
-          borderBottom: subtasksList.length > 0 ? "2px solid #b4d9cb" : "none",
+          borderBottom:
+            filteredSubtasks.length > 0 ? "2px solid #b4d9cb" : "none",
         }}
       >
         <Checkbox
@@ -81,11 +90,12 @@ const Task = (props) => {
       </div>
       <div>
         <ul style={{ marginLeft: "20px" }}>
-          {subtasksList.map((thisSubtask, index) => {
+          {filteredSubtasks.map((thisSubtask, index) => {
             return (
               <Subtask
                 key={index}
-                subtask={thisSubtask}
+                id={thisSubtask.id}
+                subtask={thisSubtask.name}
                 complete={subtaskCompleted}
                 editable={props.editable}
                 delete={deleteSubtask}
@@ -104,7 +114,7 @@ const Task = (props) => {
           ></input>
           <button
             className="submitBtn noStyleBtn"
-            onClick={(e) => addSubtask(e)}
+            onClick={(e) => submitSubtask(e)}
           >
             <img src={createIcon} alt="Add Tarefa" />
           </button>
@@ -114,4 +124,4 @@ const Task = (props) => {
   );
 };
 
-export default Task;
+export default connect(null, { addSubtask, removeSubtask })(Task);

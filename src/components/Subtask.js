@@ -27,7 +27,7 @@ const Subtask = (props) => {
       {props.editable && (
         <button
           className="taskDeleteBtn noStyleBtn"
-          onClick={() => props.delete(props.subtask)}
+          onClick={() => props.delete(props.id)}
         >
           <img src={deleteIcon} alt="delete" />
         </button>
