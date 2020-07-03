@@ -9,7 +9,7 @@ class AddTodo extends React.Component {
     super(props);
     this.state = {
       name: "",
-      tasks: [],
+      tasks: [{ id: 0, name: "" }],
       taskCounter: [0],
     };
     this.updateInput = this.updateInput.bind(this);
@@ -53,10 +53,11 @@ class AddTodo extends React.Component {
 
     newCount = count[count.length - 1] + 1;
 
-    console.log(newCount);
-
     const list = [...count, newCount];
     this.setState({ taskCounter: list });
+    this.setState({
+      tasks: [...this.state.tasks, { id: newCount, name: "" }],
+    });
 
     e.preventDefault();
   };
@@ -66,7 +67,11 @@ class AddTodo extends React.Component {
       alert("Você se esqueceu do nome da lista!");
     } else {
       this.props.addTodo(this.state.name, this.state.tasks);
-      this.setState({ name: "", tasks: [], taskCounter: [0] });
+      this.setState({
+        name: "",
+        tasks: [{ id: 0, name: "" }],
+        taskCounter: [0],
+      });
     }
 
     e.preventDefault();
@@ -94,6 +99,7 @@ class AddTodo extends React.Component {
                   }}
                   type="text"
                   placeholder="Adicionar tarefa"
+                  value={this.state.tasks[index].name}
                 />
                 {index === this.state.taskCounter.length - 1 && (
                   <button
