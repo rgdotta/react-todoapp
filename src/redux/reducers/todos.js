@@ -31,7 +31,9 @@ const initialState = {
 export default function (state = initialState, action) {
   switch (action.type) {
     case ADD_TODO: {
-      const { id, name, tasks } = action.payload;
+      const { name, tasks } = action.payload;
+      const id = state.allIds.length;
+
       return {
         ...state,
         allIds: [...state.allIds, id],
