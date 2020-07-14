@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Checkbox } from "@material-ui/core";
 import deleteIcon from "../../css/images/icone_deletar_tarefa-subtarefa.png";
@@ -16,9 +16,19 @@ const Subtask = (props) => {
     }
   }
 
+  useEffect(() => {
+    if (props.taskCompleted) {
+      setComplete(true);
+    }
+  }, [props.taskCompleted]);
+
   return (
     <li className="subTask flex row">
-      <Checkbox className="taskCheckbox" onClick={completeTask} />
+      <Checkbox
+        className="taskCheckbox"
+        onClick={completeTask}
+        checked={isComplete}
+      />
       <p
         className="taskBody"
         style={{ textDecoration: isComplete ? "line-through" : "none" }}

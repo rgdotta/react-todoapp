@@ -37,6 +37,10 @@ const Task = (props) => {
 
   function completeTask() {
     setComplete(!isComplete);
+
+    if (isComplete) {
+      setCompletedTask(filteredSubtasks.length);
+    }
   }
 
   const filteredSubtasks = props.subtasks.filter(
@@ -101,6 +105,7 @@ const Task = (props) => {
                 complete={subtaskCompleted}
                 editable={props.editable}
                 delete={deleteSubtask}
+                taskCompleted={isComplete}
               />
             );
           })}

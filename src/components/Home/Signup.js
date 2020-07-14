@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 import { Container, Button } from "@material-ui/core";
 import logo from "../../css/images/marca_mini_app.png";
-import cameraIcon from "../../cssimages/camera.png";
-import backIcon from "../../cssimages/seta.png";
+import cameraIcon from "../../css/images/camera.png";
+import backIcon from "../../css/images/seta.png";
 
 function Signup() {
   const [fields, setFields] = useState({

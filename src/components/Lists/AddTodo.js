@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { addTodo } from "../../redux/actions";
-import createIcon from "../../cssimages/botao_adicionar.png";
+import createIcon from "../../css/images/botao_adicionar.png";
 import { Button } from "@material-ui/core";
 
 class AddTodo extends React.Component {
