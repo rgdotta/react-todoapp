@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+
 import { Container, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import logo from "../images/marca_mini_app.png";
-import backIcon from "../images/seta.png";
+import logo from "../../css/images/marca_mini_app.png";
+import backIcon from "../../css/images/seta.png";
 
 function Login() {
   const [fields, setFields] = useState({

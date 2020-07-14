@@ -2,10 +2,16 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import Todo from "./Todo";
 import AddTodo from "./AddTodo";
-import Header from "./Header";
-import { removeTodo, renameTodo, addTask, removeTask } from "../redux/actions";
+import Header from "../Partials/Header";
+import {
+  removeTodo,
+  renameTodo,
+  addTask,
+  removeTask,
+} from "../../redux/actions";
+
 import { Container, Collapse } from "@material-ui/core";
-import createIcon from "../images/botao_adicionar.png";
+import createIcon from "../../css/images/botao_adicionar.png";
 
 const TodoList = ({ todos, removeTodo, renameTodo, addTask, removeTask }) => {
   const [createList, setCreateList] = useState(false);

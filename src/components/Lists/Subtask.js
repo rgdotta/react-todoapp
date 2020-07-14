@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+
 import { Checkbox } from "@material-ui/core";
-import deleteIcon from "../images/icone_deletar_tarefa-subtarefa.png";
+import deleteIcon from "../../css/images/icone_deletar_tarefa-subtarefa.png";
 
 const Subtask = (props) => {
   const [isComplete, setComplete] = useState(false);

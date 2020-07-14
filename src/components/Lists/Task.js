@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { addSubtask, removeSubtask } from "../redux/actions";
+
+import { addSubtask, removeSubtask } from "../../redux/actions";
 import Subtask from "./Subtask";
+
 import { Checkbox, Collapse } from "@material-ui/core";
-import deleteIcon from "../images/icone_deletar_tarefa-subtarefa.png";
-import createIcon from "../images/botao_adicionar.png";
+import deleteIcon from "../../css/images/icone_deletar_tarefa-subtarefa.png";
+import createIcon from "../../css/images/botao_adicionar.png";
 
 const Task = (props) => {
   const [subtask, setSubtask] = useState("");

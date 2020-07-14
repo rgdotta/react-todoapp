@@ -1,7 +1,8 @@
 import React from "react";
+
 import { Container } from "@material-ui/core";
-import logo from "../images/marca_mini_app_clara.png";
-import userAvatar from "../images/avatar.png";
+import logo from "../../cssimages/marca_mini_app_clara.png";
+import userAvatar from "../../cssimages/avatar.png";
 
 function Header() {
   return (

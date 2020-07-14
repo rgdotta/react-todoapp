@@ -1,8 +1,9 @@
 import React from "react";
+
 import { Container, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import responsiveImg from "../images/img_responsive.png";
-import logo from "../images/marca_mini_app.png";
+import responsiveImg from "../../css/images/img_responsive.png";
+import logo from "../../css/images/marca_mini_app.png";
 
 function Home() {
   return (

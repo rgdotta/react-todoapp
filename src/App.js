@@ -1,9 +1,10 @@
 import React from "react";
-import Home from "./components/Home";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
-import TodoList from "./components/TodoList";
+import Home from "./components/Home/Home";
+import Login from "./components/Home/Login";
+import Signup from "./components/Home/Signup";
+import TodoList from "./components/Lists/TodoList";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./css/styles.css";
 
 export default function App() {
   return (
