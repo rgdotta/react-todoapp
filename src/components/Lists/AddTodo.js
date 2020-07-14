@@ -23,7 +23,7 @@ class AddTodo extends React.Component {
   };
 
   updateTask = (task, id) => {
-    var loop = true;
+    let loop = true;
 
     const list = [...this.state.tasks];
 
@@ -50,13 +50,11 @@ class AddTodo extends React.Component {
 
   updateCounter = (e) => {
     const count = this.state.taskCounter;
-    var newCount;
-
-    newCount = count[count.length - 1] + 1;
+    const newCount = count[count.length - 1] + 1;
 
     const list = [...count, newCount];
-    this.setState({ taskCounter: list });
     this.setState({
+      taskCounter: list,
       tasks: [...this.state.tasks, { id: newCount, name: "" }],
     });
 

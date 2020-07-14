@@ -15,7 +15,7 @@ const Todo = ({ todo, removeTodo, renameTodo, addTask, removeTask }) => {
   const [rename, setRename] = useState(false);
 
   function handleAddTask(e) {
-    var newId;
+    let newId;
     if (todo.tasks.length > 0) {
       const getLastId = todo.tasks.slice().reverse();
       const lastId = getLastId[0].id;
