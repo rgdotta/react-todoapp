@@ -42,7 +42,8 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case ADD_TODO: {
       const { name, tasks } = action.payload;
-      const id = state.allIds.length;
+      const getId = state.allIds.slice().reverse();
+      const id = getId[0] + 1;
       const subtasks = [];
 
       return {
