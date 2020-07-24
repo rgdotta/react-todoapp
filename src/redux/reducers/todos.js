@@ -183,7 +183,7 @@ export default function (state = initialState, action) {
 
       const newTasks = [...taskList];
       newTasks.splice(findIndex, 1, status);
-
+      console.log("a");
       return {
         ...state,
         byIds: {
