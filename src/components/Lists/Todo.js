@@ -13,6 +13,7 @@ const Todo = ({ todo, removeTodo, renameTodo, addTask, removeTask }) => {
   const [newName, setNewName] = useState("");
   const [newTask, setNewTask] = useState({ name: "" });
   const [rename, setRename] = useState(false);
+  const [errors, setErrors] = useState({});
 
   function handleAddTask(e) {
     let newId;
@@ -30,9 +31,15 @@ const Todo = ({ todo, removeTodo, renameTodo, addTask, removeTask }) => {
   }
 
   function submitNewTask(e) {
-    addTask(todo.id, newTask);
-    setNewTask({ name: "" });
-
+    if (!newTask["name"]) {
+      setErrors({
+        newTask: "Você esqueceu de digitar a nova tarefa.",
+      });
+    } else {
+      addTask(todo.id, newTask);
+      setNewTask({ name: "" });
+      setErrors({});
+    }
     e.preventDefault();
   }
 
@@ -43,8 +50,13 @@ const Todo = ({ todo, removeTodo, renameTodo, addTask, removeTask }) => {
   }
 
   function submitNewName(e) {
-    renameTodo(todo.id, newName);
-    setRename(!rename);
+    if (!newName) {
+      setErrors({ newName: "Novo nome não pode ser vazio." });
+    } else {
+      renameTodo(todo.id, newName);
+      setRename(!rename);
+      setErrors({});
+    }
     e.preventDefault();
   }
 
@@ -84,6 +96,9 @@ const Todo = ({ todo, removeTodo, renameTodo, addTask, removeTask }) => {
             ) : (
               <p>{todo.name}</p>
             )}
+            {errors["newName"] && (
+              <p className="errorText">{errors["newName"]}</p>
+            )}
           </div>
           <Collapse in={isEditable}>
             <form className="flex">
@@ -102,6 +117,9 @@ const Todo = ({ todo, removeTodo, renameTodo, addTask, removeTask }) => {
                 <img src={createIcon} alt="Add tarefa" />
               </button>
             </form>
+            {errors["newTask"] && (
+              <p className="errorText">{errors["newTask"]}</p>
+            )}
           </Collapse>
           <ul className="taskList">
             {todo.tasks &&

@@ -6,6 +6,8 @@ import {
   REMOVE_TASK,
   ADD_SUBTASK,
   REMOVE_SUBTASK,
+  TOGGLE_TASK,
+  TOGGLE_SUBTASK,
 } from "../actionTypes";
 
 const initialState = {
@@ -14,15 +16,15 @@ const initialState = {
     0: {
       name: "Lista 1",
       tasks: [
-        { id: 0, name: "Tarefa 1" },
-        { id: 1, name: "Tarefa 2" },
-        { id: 2, name: "Tarefa 3" },
+        { id: 0, name: "Tarefa 1", complete: false },
+        { id: 1, name: "Tarefa 2", complete: false },
+        { id: 2, name: "Tarefa 3", complete: false },
       ],
       subtasks: [
-        { id: 0, taskId: 0, name: "Subtarefa 1" },
-        { id: 1, taskId: 1, name: "Subtarefa 1" },
-        { id: 2, taskId: 0, name: "Subtarefa 2" },
-        { id: 3, taskId: 0, name: "Subtarefa 3" },
+        { id: 0, taskId: 0, name: "Subtarefa 1", complete: false },
+        { id: 1, taskId: 1, name: "Subtarefa 1", complete: false },
+        { id: 2, taskId: 0, name: "Subtarefa 2", complete: false },
+        { id: 3, taskId: 0, name: "Subtarefa 3", complete: false },
       ],
     },
     1: {
@@ -151,6 +153,66 @@ export default function (state = initialState, action) {
 
       const newSubtasks = [...subtask];
       newSubtasks.splice(findIndex, 1);
+
+      return {
+        ...state,
+        byIds: {
+          ...state.byIds,
+          [listId]: {
+            ...state.byIds[listId],
+            subtasks: [...newSubtasks],
+          },
+        },
+      };
+    }
+    case TOGGLE_TASK: {
+      const { listId, id, boolean } = action.payload;
+      const taskList = state.byIds[listId].tasks;
+
+      const findIndex = taskList.findIndex((task) => {
+        return task.id === id;
+      });
+
+      const status = { ...state.byIds[listId].tasks[findIndex] };
+
+      boolean
+        ? (status.complete = boolean)
+        : status.complete
+        ? (status.complete = false)
+        : (status.complete = true);
+
+      const newTasks = [...taskList];
+      newTasks.splice(findIndex, 1, status);
+
+      return {
+        ...state,
+        byIds: {
+          ...state.byIds,
+          [listId]: {
+            ...state.byIds[listId],
+            tasks: [...newTasks],
+          },
+        },
+      };
+    }
+    case TOGGLE_SUBTASK: {
+      const { listId, id, boolean } = action.payload;
+      const subtaskList = state.byIds[listId].subtasks;
+
+      const findIndex = subtaskList.findIndex((subtask) => {
+        return subtask.id === id;
+      });
+
+      const status = { ...state.byIds[listId].subtasks[findIndex] };
+
+      boolean
+        ? (status.complete = boolean)
+        : status.complete
+        ? (status.complete = false)
+        : (status.complete = true);
+
+      const newSubtasks = [...subtaskList];
+      newSubtasks.splice(findIndex, 1, status);
 
       return {
         ...state,

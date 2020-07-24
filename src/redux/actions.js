@@ -6,6 +6,8 @@ import {
   REMOVE_TASK,
   ADD_SUBTASK,
   REMOVE_SUBTASK,
+  TOGGLE_TASK,
+  TOGGLE_SUBTASK,
 } from "./actionTypes";
 
 export const addTodo = (name, tasks) => ({
@@ -60,5 +62,23 @@ export const removeSubtask = (listId, id) => ({
   payload: {
     listId,
     id,
+  },
+});
+
+export const toggleTask = (listId, id, boolean) => ({
+  type: TOGGLE_TASK,
+  payload: {
+    listId,
+    id,
+    boolean,
+  },
+});
+
+export const toggleSubtask = (listId, id, boolean) => ({
+  type: TOGGLE_SUBTASK,
+  payload: {
+    listId,
+    id,
+    boolean,
   },
 });

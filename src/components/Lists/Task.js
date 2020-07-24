@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
-import { addSubtask, removeSubtask } from "../../redux/actions";
+import {
+  addSubtask,
+  removeSubtask,
+  toggleTask,
+  toggleSubtask,
+} from "../../redux/actions";
 import Subtask from "./Subtask";
 
 import { Checkbox, Collapse } from "@material-ui/core";
@@ -10,8 +15,8 @@ import createIcon from "../../css/images/botao_adicionar.png";
 
 const Task = (props) => {
   const [subtask, setSubtask] = useState("");
-  const [isComplete, setComplete] = useState(false);
-  const [completedTask, setCompletedTask] = useState(0);
+  const [error, setError] = useState("");
+  // const [completedTask, setCompletedTask] = useState(0);
 
   function handleChange(input) {
     setSubtask(input);
@@ -28,41 +33,60 @@ const Task = (props) => {
     }
     const newSubtask = { id: newId, taskId: props.task.id, name: subtask };
 
-    props.addSubtask(props.listId, newSubtask);
-
-    setSubtask("");
+    if (!newSubtask["name"]) {
+      setError("Você esqueceu de digitar a nova subtarefa.");
+    } else {
+      props.addSubtask(props.listId, newSubtask);
+      setSubtask("");
+      setError("");
+    }
 
     e.preventDefault();
-  }
-
-  function completeTask() {
-    setComplete(!isComplete);
-
-    if (isComplete) {
-      setCompletedTask(filteredSubtasks.length);
-    }
   }
 
   const filteredSubtasks = props.subtasks.filter(
     (subtask) => subtask.taskId === props.task.id
   );
 
-  function subtaskCompleted(completed) {
-    const comparison = filteredSubtasks.length;
-    let value = completed;
+  function completeTask() {
+    props.toggleTask(props.listId, props.task.id);
 
-    let newValue = completedTask + value;
-    setCompletedTask(newValue);
-
-    if (comparison === newValue) {
-      setComplete(true);
-    } else {
-      setComplete(false);
+    if (!props.task.complete) {
+      filteredSubtasks.map((subtask) => {
+        return props.toggleSubtask(props.listId, subtask.id, true);
+      });
     }
   }
 
   function deleteSubtask(toDelete) {
     props.removeSubtask(props.listId, toDelete);
+  }
+
+  function completeSubtask(listId, id) {
+    props.toggleSubtask(listId, id);
+    //   let comparison = props.subtasks;
+
+    //   const findIndex = filteredSubtasks.findIndex(
+    //     (subtask) => subtask.id === id
+    //   );
+
+    //   let newValue;
+
+    //   if (comparison[findIndex].complete) {
+    //     newValue = completedTask + 1;
+    //     setCompletedTask(newValue);
+    //   } else {
+    //     newValue = completedTask - 1;
+    //     setCompletedTask(newValue);
+    //   }
+
+    //   console.log(filteredSubtasks[findIndex].complete);
+
+    //   console.log(completedTask);
+
+    //   if (newValue > 0 && newValue === filteredSubtasks.length) {
+    //     props.toggleTask(props.listId, props.task.id, true);
+    //   }
   }
 
   return (
@@ -77,11 +101,13 @@ const Task = (props) => {
         <Checkbox
           className="taskCheckbox"
           onClick={completeTask}
-          checked={isComplete === true}
+          checked={props.task.complete === true}
         />
         <p
           className="taskBody"
-          style={{ textDecoration: isComplete ? "line-through" : "none" }}
+          style={{
+            textDecoration: props.task.complete ? "line-through" : "none",
+          }}
         >
           {props.task.name}
         </p>
@@ -100,12 +126,11 @@ const Task = (props) => {
             return (
               <Subtask
                 key={index}
-                id={thisSubtask.id}
-                subtask={thisSubtask.name}
-                complete={subtaskCompleted}
+                subtask={thisSubtask}
+                toggleComplete={completeSubtask}
                 editable={props.editable}
                 delete={deleteSubtask}
-                taskCompleted={isComplete}
+                listId={props.listId}
               />
             );
           })}
@@ -126,9 +151,15 @@ const Task = (props) => {
             <img src={createIcon} alt="Add Tarefa" />
           </button>
         </form>
+        {error && <p className="errorText">{error}</p>}
       </Collapse>
     </li>
   );
 };
 
-export default connect(null, { addSubtask, removeSubtask })(Task);
+export default connect(null, {
+  addSubtask,
+  removeSubtask,
+  toggleTask,
+  toggleSubtask,
+})(Task);
