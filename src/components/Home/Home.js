@@ -14,10 +14,7 @@ function Home() {
           <img src={logo} alt="logo" />
         </div>
         <div className="flex column homeBtnContainer">
-          <Link to="/registrar">
-            <Button className="orangeBtn btnSize">Criar Conta</Button>
-          </Link>
-          <Link to="/login">
+          <Link to="/listas">
             <Button className="greenBtn btnSize">Entrar</Button>
           </Link>
         </div>
