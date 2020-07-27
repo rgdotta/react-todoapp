@@ -13,8 +13,6 @@ function AddTodo(props) {
   function updateInput(e) {
     setName(e.target.value);
   }
-  console.log(taskCounter);
-  console.log(tasks);
 
   function updateTask(task, id) {
     let loop = true;

@@ -49,7 +49,7 @@ ul {
 }
 
 .logo {
-  width: 70%;
+  width: 90%;
   margin: auto;
 }
 
@@ -220,7 +220,7 @@ ul {
 /* Home */
 .bg {
   display: flex;
-  height: 762px;
+  height: max-content;
 }
 
 .bg::before {
@@ -229,7 +229,7 @@ ul {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 170%;
   opacity: 0.3;
   z-index: -1;
   background-image: url("./bg.png");
@@ -242,13 +242,21 @@ ul {
 }
 
 .imgsContainer img {
-  width: 80%;
   margin: 40px auto auto auto;
+}
+
+.homeImg1 {
+  width: 60% !important;
+}
+
+.homeImg2 {
+  width: 80% !important;
 }
 
 .homeBtnContainer {
   align-items: center;
   margin-top: 50px !important;
+  margin-bottom: 30px !important;
 }
 
 .btnSize {
@@ -260,6 +268,10 @@ ul {
 
 a {
   text-decoration: none;
+}
+
+.accordionList {
+  margin: 0 50px;
 }
 
 /* Registrar e Login */
@@ -317,6 +329,10 @@ a {
     margin: auto 0;
   }
 
+  .logo {
+    width: 50%;
+  }
+
   .todoMain {
     width: 85%;
   }
@@ -369,8 +385,12 @@ a {
     text-align: right !important;
   }
 
-  .imgsContainer img {
-    width: 50%;
+  .homeImg1 {
+    width: 60% !important;
+  }
+
+  .homeImg2 {
+    width: 80% !important;
   }
 
   .signUpMargin img {
