@@ -318,6 +318,13 @@ a {
 }
 
 /* Media Query */
+
+@media only screen and (min-width: 450px) {
+  .logo {
+    width: 60%;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .headerBackground,
   .headerContainer {
