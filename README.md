@@ -1,9 +1,8 @@
-# DO + IT + NOW
+# TAREFEIRO
 
-Mini App de lista de tarefas criado para o processo seletivo na empresa Autoseg.
-Permite a criação de listas com tarefas e subtarefas.
+Tarefeiro é um app de lista de tarefas, onde as tarefas são salvas no local storage do browser. A idéia é ter uma solução com persistencia de dados, mas que seja mais pratica, para ser usada em tarefas do dia-a-dia, sem a necessidade de autenticação.
 
-Acesse no heroku em: https://doitnow123.herokuapp.com/
+Acesse no heroku em: https://tarefeirolistas.herokuapp.com/
 
 ## Download
 
