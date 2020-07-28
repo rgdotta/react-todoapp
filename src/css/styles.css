@@ -40,7 +40,11 @@ ul {
 .headerBackground {
   margin-bottom: 40px;
   height: 150px;
-  background-color: #574437;
+  background-color: #383428;
+  -webkit-box-shadow: 10px 10px 40px -24px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 40px -24px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 40px -24px rgba(0, 0, 0, 0.75);
+  border-bottom: 1px solid grey;
 }
 
 .headerContainer {
@@ -56,7 +60,7 @@ ul {
 }
 
 .headerContainer p {
-  color: #f9f4c2;
+  color: #ef7734;
   font-size: 25px;
 }
 
@@ -183,6 +187,10 @@ ul {
 
 .subTask {
   font-size: 16px;
+}
+
+.listBg {
+  background-image: url("../css/notebook-dark.png");
 }
 
 /* Create List */
@@ -371,7 +379,8 @@ a {
 
 @media only screen and (min-width: 768px) {
   .headerBackground,
-  .headerContainer {
+  .headerContainer,
+  .headerBackground::before {
     height: 100px;
   }
 

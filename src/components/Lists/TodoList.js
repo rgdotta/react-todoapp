@@ -17,7 +17,7 @@ const TodoList = ({ todos, removeTodo, renameTodo, addTask, removeTask }) => {
   const [createList, setCreateList] = useState(false);
 
   return (
-    <div>
+    <div className="listBg">
       <Header />
       <Container className="containerMaxWidth">
         <Collapse in={createList}>
