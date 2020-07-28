@@ -46,6 +46,18 @@ ul {
 .headerContainer {
   height: 150px;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.headerContainer img,
+.headerContainer p {
+  margin: 0 auto;
+}
+
+.headerContainer p {
+  color: #f9f4c2;
+  font-size: 25px;
 }
 
 .logo {
@@ -274,6 +286,38 @@ a {
   margin: 0 50px;
 }
 
+.changeNameBtn {
+  background: none !important;
+  font-size: 14px;
+}
+
+.changeNameBtn:hover {
+  color: #ef7734;
+}
+
+.usernameContainer {
+  text-align: center;
+  color: #383428;
+  align-items: center;
+}
+
+.homeUsername {
+  font-size: 22px;
+  font-weight: bold;
+  color: #ef7734;
+  margin-bottom: 8px;
+}
+
+.usernameContainer input {
+  width: 250px;
+}
+
+.usernameContainer label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
 /* Registrar e Login */
 .formContainer {
   height: 570px;
@@ -329,6 +373,10 @@ a {
   .headerBackground,
   .headerContainer {
     height: 100px;
+  }
+
+  .headerContainer {
+    flex-direction: row;
   }
 
   .flex,
@@ -411,5 +459,8 @@ a {
 
   .formInput {
     width: 350px;
+  }
+  .usernameContainer label {
+    font-size: 20px;
   }
 }

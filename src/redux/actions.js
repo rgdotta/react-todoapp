@@ -8,6 +8,7 @@ import {
   REMOVE_SUBTASK,
   TOGGLE_TASK,
   TOGGLE_SUBTASK,
+  SET_USERNAME,
 } from "./actionTypes";
 
 export const addTodo = (name, tasks) => ({
@@ -80,5 +81,12 @@ export const toggleSubtask = (listId, id, boolean) => ({
     listId,
     id,
     boolean,
+  },
+});
+
+export const setUsername = (name) => ({
+  type: SET_USERNAME,
+  payload: {
+    name,
   },
 });

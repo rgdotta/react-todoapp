@@ -16,7 +16,6 @@ import createIcon from "../../css/images/botao_adicionar.png";
 const Task = (props) => {
   const [subtask, setSubtask] = useState("");
   const [error, setError] = useState("");
-  // const [completedTask, setCompletedTask] = useState(0);
 
   function handleChange(input) {
     setSubtask(input);
@@ -64,29 +63,6 @@ const Task = (props) => {
 
   function completeSubtask(listId, id) {
     props.toggleSubtask(listId, id);
-    //   let comparison = props.subtasks;
-
-    //   const findIndex = filteredSubtasks.findIndex(
-    //     (subtask) => subtask.id === id
-    //   );
-
-    //   let newValue;
-
-    //   if (comparison[findIndex].complete) {
-    //     newValue = completedTask + 1;
-    //     setCompletedTask(newValue);
-    //   } else {
-    //     newValue = completedTask - 1;
-    //     setCompletedTask(newValue);
-    //   }
-
-    //   console.log(filteredSubtasks[findIndex].complete);
-
-    //   console.log(completedTask);
-
-    //   if (newValue > 0 && newValue === filteredSubtasks.length) {
-    //     props.toggleTask(props.listId, props.task.id, true);
-    //   }
   }
 
   return (

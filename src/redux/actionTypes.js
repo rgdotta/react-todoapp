@@ -7,3 +7,4 @@ export const ADD_SUBTASK = "ADD_SUBTASK";
 export const REMOVE_SUBTASK = "REMOVE_SUBTASK";
 export const TOGGLE_TASK = "TOGGLE_TASK";
 export const TOGGLE_SUBTASK = "TOGGLE_SUBTASK";
+export const SET_USERNAME = "SET_USERNAME";

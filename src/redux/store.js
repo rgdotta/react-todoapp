@@ -8,6 +8,7 @@ const store = createStore(rootReducer, persistedState);
 store.subscribe(() => {
   saveState({
     todos: store.getState().todos,
+    username: store.getState().username,
   });
 });
 

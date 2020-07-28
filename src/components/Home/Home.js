@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { setUsername } from "../../redux/actions";
 
 import {
   Container,
@@ -12,7 +14,20 @@ import { Link } from "react-router-dom";
 import responsiveImg from "../../css/images/img_responsive.png";
 import logo from "../../css/images/marca_mini_app.png";
 
-function Home() {
+function Home(props) {
+  const [name, setName] = useState("");
+  const [changeName, setChangeName] = useState(false);
+  const [error, setError] = useState("");
+
+  function submitUsername(e) {
+    if ((changeName && !name) || (!name && !props.username.name)) {
+      setError("Você esqueceu do seu apelido!");
+      e.preventDefault();
+    } else if (changeName || !props.username.name) {
+      props.setUsername(name);
+    }
+  }
+
   return (
     <div className="bg">
       <Container maxWidth="sm">
@@ -20,9 +35,36 @@ function Home() {
           <img className="homeImg1" src={responsiveImg} alt="img" />
           <img className="homeImg2" src={logo} alt="logo" />
         </div>
+        {changeName === false && props.username.name ? (
+          <div className="usernameContainer">
+            <p className="homeUsername"> Bem-vindo(a) {props.username.name}!</p>
+            <button
+              className="noStyleBtn changeNameBtn"
+              onClick={(e) => {
+                setChangeName(true);
+                e.preventDefault();
+              }}
+            >
+              Alterar apelido
+            </button>
+          </div>
+        ) : (
+          <div className="usernameContainer flex column">
+            <label htmlFor="usernameInput">Digite seu apelido:</label>
+            <input
+              className="defaultInput"
+              onChange={(e) => setName(e.target.value)}
+              value={name}
+              name="usernameInput"
+            />
+            {error && <p className="errorText">{error}</p>}
+          </div>
+        )}
         <div className="flex column homeBtnContainer">
           <Link to="/listas">
-            <Button className="greenBtn btnSize">Entrar</Button>
+            <Button onClick={submitUsername} className="greenBtn btnSize">
+              Entrar
+            </Button>
           </Link>
         </div>
         <Accordion>
@@ -77,4 +119,10 @@ function Home() {
   );
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+  const username = state.username;
+
+  return { username };
+};
+
+export default connect(mapStateToProps, { setUsername })(Home);
