@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Container } from "@material-ui/core";
 import logo from "../../css/images/marca_mini_app_clara.png";
 
-function Header(props) {
+const Header = (props) => {
   return (
     <div className="headerBackground">
       <Container className="containerMaxWidth">
@@ -18,7 +18,7 @@ function Header(props) {
       </Container>
     </div>
   );
-}
+};
 
 const mapStateToProps = (state) => {
   const username = state.username;

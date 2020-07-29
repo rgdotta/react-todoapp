@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { setUsername } from "../../redux/actions";
 
+import Footer from "../Partials/Footer";
 import {
   Container,
   Button,
@@ -14,7 +15,7 @@ import { Link } from "react-router-dom";
 import responsiveImg from "../../css/images/img_responsive.png";
 import logo from "../../css/images/marca_mini_app.png";
 
-function Home(props) {
+const Home = (props) => {
   const [name, setName] = useState("");
   const [changeName, setChangeName] = useState(false);
   const [error, setError] = useState("");
@@ -114,10 +115,11 @@ function Home(props) {
             </div>
           </AccordionDetails>
         </Accordion>
+        <Footer />
       </Container>
     </div>
   );
-}
+};
 
 const mapStateToProps = (state) => {
   const username = state.username;

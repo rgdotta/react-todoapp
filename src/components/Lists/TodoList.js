@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Todo from "./Todo";
 import AddTodo from "./AddTodo";
 import Header from "../Partials/Header";
+import Footer from "../Partials/Footer";
 import {
   removeTodo,
   renameTodo,
@@ -57,6 +58,7 @@ const TodoList = ({ todos, removeTodo, renameTodo, addTask, removeTask }) => {
           </ul>
         </div>
       </Container>
+      <Footer />
     </div>
   );
 };

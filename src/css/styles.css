@@ -69,6 +69,12 @@ ul {
   margin: auto;
 }
 
+.copyright {
+  color: #383428;
+  text-align: center;
+  margin-top: 30px;
+}
+
 /* List */
 .todo-list {
   margin: 0 !important;
@@ -241,18 +247,8 @@ ul {
 .bg {
   display: flex;
   height: max-content;
-}
-
-.bg::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 170%;
-  opacity: 0.3;
-  z-index: -1;
-  background-image: url("./bg.png");
+  background-image: url("./gplay.png");
+  background-color: #e7eef5;
 }
 
 .imgsContainer {

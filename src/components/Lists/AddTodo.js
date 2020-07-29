@@ -5,7 +5,7 @@ import { addTodo } from "../../redux/actions";
 import createIcon from "../../css/images/botao_adicionar.png";
 import { Button } from "@material-ui/core";
 
-function AddTodo(props) {
+const AddTodo = (props) => {
   const [name, setName] = useState("");
   const [tasks, setTasks] = useState([{ id: 0, name: "" }]);
   const [taskCounter, setTaskCounter] = useState([0]);
@@ -109,6 +109,6 @@ function AddTodo(props) {
       </form>
     </div>
   );
-}
+};
 
 export default connect(null, { addTodo })(AddTodo);
