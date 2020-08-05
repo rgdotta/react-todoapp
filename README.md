@@ -26,7 +26,7 @@ Depois, inicie a aplicação localmente com:
 $ npm start
 ```
 
-A aplicação irá iniciar no https://localhost:3000/
+A aplicação irá iniciar em: https://localhost:3000/
 
 ## Criado usando as seguintes técnologias
 
