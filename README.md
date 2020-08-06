@@ -1,6 +1,6 @@
 # TAREFEIRO
 
-Tarefeiro é um app de lista de tarefas, onde as tarefas são salvas no local storage do browser. A idéia é ter uma solução com persistencia de dados, mas que seja mais pratica, para ser usada em tarefas do dia-a-dia, sem a necessidade de autenticação.
+Tarefeiro é um app de lista de tarefas, onde as listas e as tarefas são salvas no local storage do browser. A idéia é ter uma solução com persistencia de dados, mas que seja mais pratica, para ser usada em tarefas do dia-a-dia, sem a necessidade de autenticação.
 
 Acesse no heroku em: https://tarefeirolistas.herokuapp.com/
 
