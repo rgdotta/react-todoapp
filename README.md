@@ -31,6 +31,6 @@ A aplicação irá iniciar em: https://localhost:3000/
 ## Criado usando as seguintes técnologias
 
 - ES6+
-- React (Componente de classe e Hooks)
+- React (Hooks)
 - Redux
 - Material-UI
