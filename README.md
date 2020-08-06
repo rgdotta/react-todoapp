@@ -6,7 +6,7 @@ Acesse no heroku em: https://tarefeirolistas.herokuapp.com/
 
 ## Download
 
-Na paste designada, clone o repositório usando o seguinte código no seu terminal:
+Clone o repositório usando o seguinte código no seu terminal:
 
 ```
 $ git clone https://github.com/rgdotta/react-todoapp.git
