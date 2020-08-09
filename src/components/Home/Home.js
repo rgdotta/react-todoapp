@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { setUsername } from "../../redux/actions";
+import { setUsername } from "../../store/actions";
 
 import Footer from "../Partials/Footer";
 import {

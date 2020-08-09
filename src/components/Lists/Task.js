@@ -6,7 +6,7 @@ import {
   removeSubtask,
   toggleTask,
   toggleSubtask,
-} from "../../redux/actions";
+} from "../../store/actions";
 import Subtask from "./Subtask";
 
 import { Checkbox, Collapse } from "@material-ui/core";

@@ -9,7 +9,7 @@ import {
   renameTodo,
   addTask,
   removeTask,
-} from "../../redux/actions";
+} from "../../store/actions";
 
 import { Container, Collapse } from "@material-ui/core";
 import createIcon from "../../css/images/botao_adicionar.png";
