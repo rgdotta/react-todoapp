@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import "./Partials.css";
 import { Container } from "@material-ui/core";
 import logo from "../../css/images/marca_mini_app_clara.png";
 

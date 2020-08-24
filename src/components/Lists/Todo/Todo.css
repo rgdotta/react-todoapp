@@ -1,0 +1,69 @@
+.todo-list {
+  margin: 0 !important;
+}
+
+.listContainer {
+  border: 2px solid #b4d9cb;
+  border-radius: 7px;
+  margin: auto;
+  color: #383428;
+}
+
+.todoItem {
+  padding: 0 10px;
+  border-bottom: 2px solid #b4d9cb;
+}
+
+.todoContainer,
+.listMainTitleContainer {
+  flex-direction: row;
+}
+
+.todoMain {
+  width: 70%;
+}
+
+.btnRow {
+  flex-direction: row;
+  width: 20%;
+  justify-content: end;
+  margin-top: 8px !important;
+}
+
+.listIcon {
+  width: 10%;
+  margin-top: 15px !important;
+}
+
+.listTitle p {
+  margin: 8px 0;
+  font-size: 24px;
+}
+
+.mainTitle h1 {
+  font-weight: normal;
+  font-size: 30px;
+  color: #383428;
+  margin: 5px 0;
+}
+
+.createBtn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.createBtn,
+.mainTitle {
+  width: 50%;
+}
+
+.renameInput {
+  margin-top: 50px !important;
+}
+
+.renameBtn {
+  margin-top: 58px !important ;
+  background-color: #ffffff !important;
+  color: #ef7734 !important;
+  margin-left: -76px !important;
+}

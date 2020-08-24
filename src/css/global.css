@@ -1,0 +1,78 @@
+@font-face {
+  font-family: "SF-Pro-Display";
+  src: url("./fonts/SF-Pro-Display-Light.otf") format("opentype");
+}
+
+body {
+  margin: 0;
+  font-family: "SF-Pro-Display", sans-serif !important;
+}
+
+a {
+  text-decoration: none;
+}
+
+.flex {
+  display: flex;
+  margin: auto;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.column {
+  flex-direction: column;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+.noStyleBtn {
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+.containerMaxWidth {
+  max-width: 750px !important;
+}
+
+.logo {
+  width: 90%;
+  margin: auto;
+}
+
+.defaultInput {
+  height: 40px;
+  width: 80%;
+  border: 1px solid #ef7734;
+  padding-right: 50px;
+  padding-left: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.defaultInput:focus {
+  outline: none;
+}
+
+.submitBtn {
+  margin-left: -53px;
+  height: 31px;
+  margin-top: 17px !important;
+}
+
+.greenBtn {
+  background-color: #b7cf51 !important;
+  color: #574437 !important;
+  text-transform: none !important;
+}
+
+.orangeBtn {
+  background-color: #ef7734 !important;
+  color: #ffffff !important;
+  text-transform: none !important;
+}

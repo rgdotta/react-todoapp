@@ -1,0 +1,32 @@
+.headerBackground {
+  margin-bottom: 40px;
+  height: 150px;
+  background-color: #383428;
+  -webkit-box-shadow: 10px 10px 40px -24px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 40px -24px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 40px -24px rgba(0, 0, 0, 0.75);
+  border-bottom: 1px solid grey;
+}
+
+.headerContainer {
+  height: 150px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.headerContainer img,
+.headerContainer p {
+  margin: 0 auto;
+}
+
+.headerContainer p {
+  color: #ef7734;
+  font-size: 25px;
+}
+
+.copyright {
+  color: #383428;
+  text-align: center;
+  margin-top: 30px;
+}

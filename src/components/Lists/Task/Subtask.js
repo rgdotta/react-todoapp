@@ -1,7 +1,8 @@
 import React from "react";
 
+import "./Task.css";
 import { Checkbox } from "@material-ui/core";
-import deleteIcon from "../../css/images/icone_deletar_tarefa-subtarefa.png";
+import deleteIcon from "../../../css/images/icone_deletar_tarefa-subtarefa.png";
 
 const Subtask = (props) => {
   return (

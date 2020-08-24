@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import Task from "./Task";
+import Task from "../Task/Task";
 
+import "./Todo.css";
 import { Button, Collapse } from "@material-ui/core";
-import listIcon from "../../css/images/icone_lista.png";
-import editIcon from "../../css/images/icone_editar.png";
-import deleteIcon from "../../css/images/icone_deletar_lista.png";
-import createIcon from "../../css/images/botao_adicionar.png";
+import listIcon from "../../../css/images/icone_lista.png";
+import editIcon from "../../../css/images/icone_editar.png";
+import deleteIcon from "../../../css/images/icone_deletar_lista.png";
+import createIcon from "../../../css/images/botao_adicionar.png";
 
 const Todo = ({ todo, removeTodo, renameTodo, addTask, removeTask }) => {
   const [isEditable, setEditable] = useState(false);

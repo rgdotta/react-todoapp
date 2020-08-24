@@ -1,0 +1,102 @@
+@media only screen and (min-width: 450px) {
+  .logo {
+    width: 60%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .headerBackground,
+  .headerContainer,
+  .headerBackground::before {
+    height: 100px;
+  }
+
+  .headerContainer {
+    flex-direction: row;
+  }
+
+  .flex,
+  .logo {
+    margin: auto 0;
+  }
+
+  .logo {
+    width: 50%;
+  }
+
+  .todoMain {
+    width: 85%;
+  }
+
+  .listIcon {
+    width: 5%;
+  }
+
+  .btnRow {
+    width: 10%;
+  }
+
+  .renameBtn {
+    margin-top: 17px !important;
+    margin-left: -82px !important;
+  }
+
+  .renameInput {
+    margin-top: 10px !important;
+  }
+
+  .taskInput {
+    width: 76%;
+    margin-left: 30px;
+  }
+
+  .createInput {
+    width: 91%;
+  }
+
+  .addTodoBtnContainer {
+    flex-direction: row;
+    margin-top: 20px;
+    margin-bottom: 70px;
+  }
+
+  .addTodoBtnContainer button {
+    width: 70%;
+  }
+
+  .addTodoBtnContainer div {
+    margin: 5px 10px;
+  }
+
+  .addTodoDiv {
+    text-align: left !important;
+  }
+
+  .cancelTodoDiv {
+    text-align: right !important;
+  }
+
+  .homeImg1 {
+    width: 60% !important;
+  }
+
+  .homeImg2 {
+    width: 80% !important;
+  }
+
+  .signUpMargin img {
+    width: 45%;
+  }
+
+  .btnSize {
+    width: 250px;
+    height: 55px;
+  }
+
+  .formInput {
+    width: 350px;
+  }
+  .usernameContainer label {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,31 @@
+.taskCheckbox {
+  width: 5%;
+  border: #b4d9cb;
+}
+
+.taskBody {
+  width: 85%;
+  margin: auto 0;
+}
+
+.taskDeleteBtn {
+  width: 10%;
+}
+
+.task {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.taskInput {
+  width: 75%;
+  margin-left: 20px;
+}
+
+.subTask {
+  font-size: 16px;
+}
+
+.listBg {
+  background-image: url("../../../css/notebook-dark.png");
+}

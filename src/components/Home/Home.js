@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { setUsername } from "../../store/actions";
 
 import Footer from "../Partials/Footer";
+
+import "./Home.css";
 import {
   Container,
   Button,

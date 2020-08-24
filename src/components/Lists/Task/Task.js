@@ -6,12 +6,13 @@ import {
   removeSubtask,
   toggleTask,
   toggleSubtask,
-} from "../../store/actions";
+} from "../../../store/actions";
 import Subtask from "./Subtask";
 
+import "./Task.css";
 import { Checkbox, Collapse } from "@material-ui/core";
-import deleteIcon from "../../css/images/icone_deletar_tarefa-subtarefa.png";
-import createIcon from "../../css/images/botao_adicionar.png";
+import deleteIcon from "../../../css/images/icone_deletar_tarefa-subtarefa.png";
+import createIcon from "../../../css/images/botao_adicionar.png";
 
 const Task = (props) => {
   const [subtask, setSubtask] = useState("");

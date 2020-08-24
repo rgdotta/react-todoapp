@@ -1,0 +1,73 @@
+.bg {
+  display: flex;
+  height: max-content;
+  background-image: url("../../css/gplay.png");
+  background-color: #e7eef5;
+}
+
+.imgsContainer {
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 100px !important;
+}
+
+.imgsContainer img {
+  margin: 40px auto auto auto;
+}
+
+.homeImg1 {
+  width: 60% !important;
+}
+
+.homeImg2 {
+  width: 80% !important;
+}
+
+.homeBtnContainer {
+  align-items: center;
+  margin-top: 50px !important;
+  margin-bottom: 30px !important;
+}
+
+.btnSize {
+  width: 200px;
+  height: 45px;
+  margin: 10px auto auto auto !important;
+  font-size: 17px !important;
+}
+
+.accordionList {
+  margin: 0 50px;
+}
+
+.changeNameBtn {
+  background: none !important;
+  font-size: 14px;
+}
+
+.changeNameBtn:hover {
+  color: #ef7734;
+}
+
+.usernameContainer {
+  text-align: center;
+  color: #383428;
+  align-items: center;
+}
+
+.homeUsername {
+  font-size: 22px;
+  font-weight: bold;
+  color: #ef7734;
+  margin-bottom: 8px;
+}
+
+.usernameContainer input {
+  width: 250px;
+}
+
+.usernameContainer label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 20px;
+}

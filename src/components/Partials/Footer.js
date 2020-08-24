@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./Partials.css";
+
 const date = new Date();
 const year = date.getFullYear();
 

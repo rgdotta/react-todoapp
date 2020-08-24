@@ -1,0 +1,36 @@
+.createTitle {
+  font-weight: normal;
+  font-size: 30px;
+  color: #383428;
+  margin: 5px 0;
+}
+
+.createInput {
+  margin: 5px 0;
+}
+
+.addTaskBtn {
+  margin-top: 13px !important;
+  margin-left: -40px;
+}
+
+.addTodoBtnContainer {
+  justify-content: center;
+  height: 70px;
+  flex-direction: column;
+  margin-top: 30px;
+  margin-bottom: 70px;
+}
+
+.addTodoBtnContainer div {
+  text-align: center;
+  width: 70%;
+  margin: 5px auto;
+}
+
+.addTodoBtnContainer button {
+  width: 100%;
+  margin: auto;
+  justify-content: center;
+  height: 50px;
+}

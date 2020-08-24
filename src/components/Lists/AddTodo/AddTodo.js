@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
-import { addTodo } from "../../store/actions";
-import createIcon from "../../css/images/botao_adicionar.png";
+import "./AddTodo.css";
+import { addTodo } from "../../../store/actions";
+import createIcon from "../../../css/images/botao_adicionar.png";
 import { Button } from "@material-ui/core";
 
 const AddTodo = (props) => {
